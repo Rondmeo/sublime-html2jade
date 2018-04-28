@@ -11,7 +11,7 @@ class HtmlToJadeFromFileCommand(sublime_plugin.TextCommand):
         if target:
             with open(source, 'r') as f:
                 html = f.read()
-            jade = HTHTools.convertHTML2Jade(html)
+            jade = HTHTools.convertHTML2Jade(self, html)
             if jade != None:
                 with open(target, 'w') as f:
                     f.write(jade)
@@ -25,7 +25,7 @@ class HtmlToJadeFromSelectionCommand(sublime_plugin.TextCommand):
         for region in self.view.sel():
             if not region.empty():
                 html = self.view.substr(region)
-                jade = HTHTools.convertHTML2Jade(html)
+                jade = HTHTools.convertHTML2Jade(self, html)
                 if jade != None:
                     self.view.replace(edit, region, jade)
 
@@ -35,7 +35,7 @@ class HtmlToJadeFromSelectionCommand(sublime_plugin.TextCommand):
 class HtmlToJadeFromClipboardCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         html = sublime.get_clipboard()
-        jade = HTHTools.convertHTML2Jade(html)
+        jade = HTHTools.convertHTML2Jade(self, html)
         if jade != None:
             for region in self.view.sel():
                 self.view.replace(edit, region, jade)
