@@ -46,8 +46,13 @@ class HtmlToJadeFromClipboardCommand(sublime_plugin.TextCommand):
 class HTHTools:
     @classmethod
     def convertHTML2Jade(self, contents):
+        settings = self.view.settings()
+        use_spaces = settings.get('translate_tabs_to_spaces')
+        use_tabs = '--tabs'
+        if use_spaces:
+            use_tabs = ''
         html2jade = subprocess.Popen(
-            'html2jade --noemptypipe --bodyless --noattrcomma',
+            'html2jade --noemptypipe --bodyless --noattrcomma ' + use_tabs,
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
