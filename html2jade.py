@@ -45,8 +45,8 @@ class HtmlToJadeFromClipboardCommand(sublime_plugin.TextCommand):
 
 class HTHTools:
     @classmethod
-    def convertHTML2Jade(self, contents):
-        settings = self.view.settings()
+    def convertHTML2Jade(self, sublime_obj, contents):
+        settings = sublime_obj.view.settings()
         use_spaces = settings.get('translate_tabs_to_spaces')
         use_tabs = '--tabs'
         if use_spaces:
