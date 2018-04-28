@@ -8,7 +8,7 @@ Converts files, selection and clipboard content from HTML to JADE using html2jad
 
 In the command Pallette choose **Package Control: Add Repository** and enter the Github URL:
 
-    https://github.com/anderson916/sublime-html2jade
+    https://github.com/rondmeo/sublime-html2jade
     
 Then choose **Package Control: Install Package** and select sublime-html2jade to install.
 
